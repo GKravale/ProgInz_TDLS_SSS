@@ -62,6 +62,7 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private Collection<CourseDate> courseDates;
     
+    
     public Course(String title, String description, int hours, CourseLevel courseLevel, Lecturer lecturer) {
     	setTitle(title);
     	setDescription(description);
