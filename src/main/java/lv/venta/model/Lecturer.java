@@ -44,6 +44,8 @@ public class Lecturer {
 	@Column(name = "Surname")
 	private String surname;
 	
+	// viens pasniedzejs vairakiem kursiem
+	
 	@OneToMany(mappedBy = "lecturer")
 	private Collection<Course> courses;
 	
