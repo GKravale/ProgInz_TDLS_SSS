@@ -54,8 +54,6 @@ public class Certificate {
 	@ToString.Exclude
 	private Collection<Grade> grades;
 
-	public Certificate(String certificateType, Course course, CourseParticipant participant) {
-
 	public Certificate(String certificateType, Course course, Grade grades, CourseParticipant participant) {
 		setCertificateType(certificateType);
 		setCourse(course);
