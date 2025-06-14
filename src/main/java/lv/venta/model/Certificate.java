@@ -57,7 +57,6 @@ public class Certificate {
 	@NotNull
 	private CourseParticipant participant;
 
-
 	@OneToMany(mappedBy = "certificate")
 	@ToString.Exclude
 	private Collection<Grade> grades;
