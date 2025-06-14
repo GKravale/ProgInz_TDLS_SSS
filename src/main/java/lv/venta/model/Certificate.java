@@ -1,5 +1,5 @@
 package lv.venta.model;
 
-public class Sertificate {
+public class Certificate {
 
 }

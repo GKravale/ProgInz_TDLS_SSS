@@ -1,6 +1,7 @@
 package lv.venta.model;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -27,7 +29,7 @@ public class CourseDate {
 	
 	@Setter(value = AccessLevel.NONE)
 	@Id
-	@Column(name = "CDId")
+	@Column(name = "CD_Id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int cdId;
 	
@@ -42,6 +44,9 @@ public class CourseDate {
 	@ManyToOne
 	@JoinColumn(name = "cID")
 	private Course course;
+	
+	@ManyToMany(mappedBy = "courseDates")
+	private Collection<CourseParticipant> participants;
 	
 	public CourseDate(LocalDate startingDate, LocalDate endingDate, Course course) {
 		setStartingDate(startingDate);

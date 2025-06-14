@@ -32,7 +32,7 @@ public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "CId")
+    @Column(name = "C_Id")
     @Setter(AccessLevel.NONE)
     private int cId;
 
