@@ -35,3 +35,4 @@ build/
 ### VS Code ###
 .vscode/
 *.properties
+/target/classes/META-INF/maven/lv.venta/ProgInz_TDLS_SSS
