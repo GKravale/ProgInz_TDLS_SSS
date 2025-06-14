@@ -2,6 +2,7 @@ package lv.venta.model;
 
 import java.util.Collection;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,11 +49,14 @@ public class Certificate {
 	@NotNull
 	private CourseParticipant participant;
 
+
 	@OneToMany(mappedBy = "certificate")
 	@ToString.Exclude
 	private Collection<Grade> grades;
 
 	public Certificate(String certificateType, Course course, CourseParticipant participant) {
+
+	public Certificate(String certificateType, Course course, Grade grades, CourseParticipant participant) {
 		setCertificateType(certificateType);
 		setCourse(course);
 		setParticipant(participant);
