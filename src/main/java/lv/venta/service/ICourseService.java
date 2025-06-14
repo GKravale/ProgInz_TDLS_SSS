@@ -1,5 +1,7 @@
 package lv.venta.service;
 
-public class ICourseService {
+public interface ICourseService {
 
+	
+	
 }
