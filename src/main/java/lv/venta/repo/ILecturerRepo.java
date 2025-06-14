@@ -1,5 +1,9 @@
 package lv.venta.repo;
 
-public interface ILecturerRepo {
+import org.springframework.data.repository.CrudRepository;
+
+import lv.venta.model.Lecturer;
+
+public interface ILecturerRepo extends CrudRepository<Lecturer, Integer> {
 
 }

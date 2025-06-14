@@ -1,5 +1,5 @@
 package lv.venta.service;
 
-public class ITemplateService {
+public interface ITemplateService {
 
 }
