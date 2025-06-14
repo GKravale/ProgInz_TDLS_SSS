@@ -53,14 +53,14 @@ public class Grade {
 	@ManyToOne
     @JoinColumn(name = "SId")
     @NotNull
-    private Sertificate certificate;
+    private Certificate certificate;
 	
 	 @ManyToOne
 	 @JoinColumn(name = "KDat_ID")
 	 @NotNull
 	 private CourseParticipant participant;
 	
-	 public Grade(int grade, LocalDate date, CourseDate courseDates, Sertificate certificate, CourseParticipant participant) {
+	 public Grade(int grade, LocalDate date, CourseDate courseDates, Certificate certificate, CourseParticipant participant) {
 		 setGrade(grade);
 		 setDate(date);
 		 setCourseDates(courseDates);
