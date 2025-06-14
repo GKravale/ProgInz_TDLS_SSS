@@ -40,9 +40,7 @@ public class Template {
     @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀČŅa-zēūīļķģšāžčņ ]+")
     private String description;
     
-    @Lob
-    @Column(name = "PDF_Data", columnDefinition = "BLOB")
-    private byte[] pdfData;
+    
     
     public Template(String title, String description, byte[] pdfData) {
     	setTitle(title);
