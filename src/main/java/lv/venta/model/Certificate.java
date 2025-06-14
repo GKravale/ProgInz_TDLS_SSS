@@ -5,6 +5,8 @@ import java.util.Collection;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,6 +21,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lv.venta.model.enums.CourseResult;
 
 @Entity
 @Table(name = "Certificate")
@@ -34,10 +37,15 @@ public class Certificate {
 	@Setter(AccessLevel.NONE)
 	private int sId;
 
+//	@Column(name = "Certificate_Type")
+//	@NotNull
+//	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀČŅa-zēūīļķģšāžčņ ]+")
+//	private String certificateType;
+	
 	@Column(name = "Certificate_Type")
 	@NotNull
-	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀČŅa-zēūīļķģšāžčņ ]+")
-	private String certificateType;
+	@Enumerated(EnumType.STRING)
+	private CourseResult result;
 
 	@ManyToOne
 	@JoinColumn(name = "KId")
@@ -53,8 +61,8 @@ public class Certificate {
 	@NotNull
 	private CourseParticipant participant;
 
-	public Certificate(String certificateType, Course course, Grade grades, CourseParticipant participant) {
-		setCertificateType(certificateType);
+	public Certificate(CourseResult result, Course course, Grade grades, CourseParticipant participant) {
+		setResult(result);
 		setCourse(course);
 		setParticipant(participant);
 
