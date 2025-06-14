@@ -28,7 +28,7 @@ public class Lecturer {
 	
 	@Setter(value = AccessLevel.NONE)
 	@Id
-	@Column(name = "lId")
+	@Column(name = "L_Id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int lId;
 	
