@@ -1,5 +1,9 @@
 package lv.venta.repo;
 
-public interface ICourseParticipantRepo {
+import org.springframework.data.repository.CrudRepository;
+
+import lv.venta.model.CourseParticipant;
+
+public interface ICourseParticipantRepo extends CrudRepository<CourseParticipant, Integer>{
 
 }
