@@ -72,10 +72,9 @@ public class Certificate {
 
 	@ManyToOne
 	@JoinColumn(name = "T_ID")
-	@NotNull
 	private Template template;
 
-	public Certificate(CourseResult result, Course course, Grade grades, CourseParticipant participant,
+	public Certificate(CourseResult result, Course course, Grade grade, CourseParticipant participant,
 			Template template) {
 		setResult(result);
 		setCourse(course);
