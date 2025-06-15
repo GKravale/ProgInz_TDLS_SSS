@@ -17,21 +17,25 @@ public class LecturerServiceImpl implements ILecturerService {
 	private ILecturerRepo lecturerRepo;
 
 	// retrieve
+	@Override
 	public List<Lecturer> getAllLecturers() {
 		return lecturerRepo.findAll();
 	}
 
 	// retrieve all
+	@Override
 	public Optional<Lecturer> getLecturerById(int lId) {
 		return lecturerRepo.findById(lId);
 	}
 
 	// create
+	@Override
 	public Lecturer createLecturer(Lecturer lecturer) {
 		return lecturerRepo.save(lecturer);
 	}
 
 	// update
+	@Override
 	public Lecturer updateLecturer(int lId, Lecturer updatedLecturer) {
 		Optional<Lecturer> existingLecturer = lecturerRepo.findById(lId);
 		if (existingLecturer.isPresent()) {
@@ -44,6 +48,7 @@ public class LecturerServiceImpl implements ILecturerService {
 	}
 
 	// delete
+	@Override
 	public boolean deleteLecturer(int lId) {
 		if (lecturerRepo.existsById(lId)) {
 			lecturerRepo.deleteById(lId);
