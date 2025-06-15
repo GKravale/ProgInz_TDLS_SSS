@@ -29,7 +29,7 @@ public class CourseDate {
 	
 	@Setter(value = AccessLevel.NONE)
 	@Id
-	@Column(name = "CD_Id")
+	@Column(name = "CD_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int cdId;
 	
@@ -42,10 +42,11 @@ public class CourseDate {
 	private LocalDate endingDate;
 	
 	@ManyToOne
-	@JoinColumn(name = "cID")
+	@JoinColumn(name = "C_ID")
+	@NotNull
 	private Course course;
 	
-	@ManyToMany(mappedBy = "courseDates")
+	@ManyToMany(mappedBy = "courseDate")
 	private Collection<CourseParticipant> participants;
 	
 	public CourseDate(LocalDate startingDate, LocalDate endingDate, Course course) {

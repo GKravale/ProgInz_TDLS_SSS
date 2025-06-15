@@ -25,7 +25,7 @@ public class Template {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "TId")
+	@Column(name = "T_ID")
 	@Setter(AccessLevel.NONE)
 	private int tId;
 
@@ -40,7 +40,7 @@ public class Template {
 	private String description;
 
 	@Lob
-	@Column(name = "PDF_Data", columnDefinition = "BLOB")
+	@Column(name = "PDF_DATA", columnDefinition = "BLOB")
 	private byte[] pdfData;
 
 	public Template(String title, String description, byte[] pdfData) {

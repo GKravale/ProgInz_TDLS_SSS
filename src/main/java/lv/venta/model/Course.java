@@ -32,7 +32,7 @@ public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "C_Id")
+    @Column(name = "C_ID")
     @Setter(AccessLevel.NONE)
     private int cId;
 
@@ -56,7 +56,7 @@ public class Course {
     private CourseLevel courseLevel;
 
     @ManyToOne
-    @JoinColumn(name = "lId")
+    @JoinColumn(name = "L_ID")
     private Lecturer lecturer;
 
     @OneToMany(mappedBy = "course")

@@ -28,9 +28,9 @@ public class Lecturer {
 	
 	@Setter(value = AccessLevel.NONE)
 	@Id
-	@Column(name = "L_Id")
+	@Column(name = "L_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int lId;
+	private int L_ID;
 	
 	@NotNull
 	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀČŅ]{1}[a-zēūīļķģšāžčņ]+")

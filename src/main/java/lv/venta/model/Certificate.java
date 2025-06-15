@@ -2,7 +2,6 @@ package lv.venta.model;
 
 import java.util.Collection;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -32,27 +31,27 @@ public class Certificate {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "C_Id")
+	@Column(name = "CRT_ID")
 	@Setter(AccessLevel.NONE)
-	private int cId;
+	private int crtId;
 
 //	@Column(name = "CertificateType")
 //	@NotNull
 //	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀČŅa-zēūīļķģšāžčņ ]+")
 //	private String certificateType;
-	
+
 	@Column(name = "Certificate_Type")
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private CourseResult result;
 
 	@ManyToOne
-	@JoinColumn(name = "Course_Id")
+	@JoinColumn(name = "C_ID")
 	@NotNull
 	private Course course;
 
 	@ManyToOne
-	@JoinColumn(name = "Participant_Id")
+	@JoinColumn(name = "CP_ID")
 	@NotNull
 	private CourseParticipant participant;
 
@@ -60,9 +59,27 @@ public class Certificate {
 	@ToString.Exclude
 	private Collection<Grade> grades;
 
-	public Certificate(CourseResult result, Course course, Grade grades, CourseParticipant participant) {
+	@Column(name = "Is_Signed")
+	private boolean isSigned = false;
+
+	@Column(name = "Is_Sent")
+	private boolean isSent = false;
+
+	@ManyToOne
+	@JoinColumn(name = "CD_ID")
+	@NotNull
+	private CourseDate courseDate;
+
+	@ManyToOne
+	@JoinColumn(name = "T_ID")
+	@NotNull
+	private Template template;
+
+	public Certificate(CourseResult result, Course course, Grade grades, CourseParticipant participant,
+			Template template) {
 		setResult(result);
 		setCourse(course);
 		setParticipant(participant);
+		setTemplate(template);
 	}
 }
