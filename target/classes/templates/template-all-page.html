@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	
+
+<body>
+	
+	<p>Visas veidnes: </p>
+	
+	<table th:each = "temp : ${package}">
+		<tr>
+			<td th:text="${temp.getTId()}" ></td>
+			<td th:text="${temp.getTitle()}" ></td>
+			<td th:text="${temp.getDescription()}" ></td>
+			<td th:text="${temp.getPdfData()}" ></td>
+			
+		</tr>
+		
+		
+	</table>
+	
+	
+</body>
+</html>
