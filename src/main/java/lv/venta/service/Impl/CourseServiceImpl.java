@@ -41,7 +41,12 @@ public class CourseServiceImpl implements ICourseService {
 		if (cId < 0) {
             throw new Exception("Kusa ID jābūt pozitīvam!");
         }
-        // 
+
+	    if(!courseRepo.existsById(cId)) {
+	        throw new Exception("Kurss ar tādu ID nepastāv!");
+	    }
+
+	    courseRepo.deleteById(cId);
 		
 	}
 
