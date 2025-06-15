@@ -1,0 +1,18 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<p>Atjauno pasniedzēju:</p>
+		<form th:action = "@{/lecturer/crud/update/__${lid}__}" method="post" th:object="${lecturer}">
+			<table>
+				<tr>
+					<td>Name</td>
+					<td><input type="text" th:field="*{name}"	/></td>
+				</tr>
+				<tr>
+					<td>Surname</td>
+					<td><input type="text" th:field="*{surname}"	/></td>
+				</tr>
+			</table>
+			<button type="submit">Atjauno</button>
+		</form>
+	</body>
+</html>
