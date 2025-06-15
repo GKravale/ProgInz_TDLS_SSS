@@ -4,4 +4,5 @@ public enum CourseResult {
 	
 	Certificate, Attendance
 
+	
 }

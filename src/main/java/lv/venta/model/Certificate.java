@@ -24,7 +24,7 @@ import lombok.ToString;
 import lv.venta.model.enums.CourseResult;
 
 @Entity
-@Table(name = "Certificate")
+@Table(name = "Certificate_Table")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -37,7 +37,7 @@ public class Certificate {
 	@Setter(AccessLevel.NONE)
 	private int sId;
 
-//	@Column(name = "Certificate_Type")
+//	@Column(name = "CertificateType")
 //	@NotNull
 //	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀČŅa-zēūīļķģšāžčņ ]+")
 //	private String certificateType;
@@ -52,19 +52,18 @@ public class Certificate {
 	@NotNull
 	private Course course;
 
-	@OneToMany(mappedBy = "certificate")
-	@ToString.Exclude
-	private Collection<Grade> grades;
-
 	@ManyToOne
 	@JoinColumn(name = "KDId")
 	@NotNull
 	private CourseParticipant participant;
 
+	@OneToMany(mappedBy = "certificate")
+	@ToString.Exclude
+	private Collection<Grade> grades;
+
 	public Certificate(CourseResult result, Course course, Grade grades, CourseParticipant participant) {
 		setResult(result);
 		setCourse(course);
 		setParticipant(participant);
-
 	}
 }
