@@ -46,7 +46,7 @@ public class CourseServiceImpl implements ICourseService {
 	}
 
 	@Override
-	public void insertNewCourse(Course course) throws Exception {
+	public void createNewCourse(Course course) throws Exception {
 		if(courseRepo.existsById(course.getCId())) {
 			throw new Exception("Kurss ar tādu ID jau eksistē!");
 		}
