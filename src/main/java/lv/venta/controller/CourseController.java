@@ -24,7 +24,7 @@ public class CourseController {
 
 	// get /course/crud/show/all
 	@GetMapping("/all") // localhost:8080/course/crud/all
-	public String getAllCourses(org.springframework.ui.Model model) {
+	public String getAllCourses(Model model) {
 		try {
 			model.addAttribute("package", courseService.selectAllCourses());
 			return "course-all-page";
