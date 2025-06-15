@@ -1,0 +1,49 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<h1>Rediģēt sertifikātu</h1>
+	<form th:action="@{/certificate/update/{id}(id=${certificate.id})}" method="post">
+		<table>
+			<tr>
+				<td>Dalībnieka vārds:</td>
+				<td><input type="text" name="participantName" th:value="${certificate.participant.name}" required></td>
+			</tr>
+			<tr>
+				<td>Dalībnieka uzvārds:</td>
+				<td><input type="text" name="participantSurname" th:value="${certificate.participant.surname}" required>
+				</td>
+			</tr>
+			<tr>
+				<td>Kursa nosaukums:</td>
+				<td><input type="text" name="courseTitle" th:value="${certificate.course.title}" required></td>
+			</tr>
+			<tr>
+				<td>Kursa stundas:</td>
+				<td><input type="number" name="courseHours" th:value="${certificate.course.hours}" required></td>
+			</tr>
+			<tr>
+				<td>Veidnes ID:</td>
+				<td><input type="number" name="tId"
+						th:value="${certificate.template != null ? certificate.template.id : ''}" required></td>
+			</tr>
+			<tr>
+				<td>Pabeigšanas datums:</td>
+				<td><input type="date" name="completionDate" th:value="${certificate.courseDate.endingDate}" required>
+				</td>
+			</tr>
+			<tr>
+				<td>Atzīme:</td>
+				<td><input type="number" name="newGradeValue" th:value="${certificate.grade.grade}" min="1" max="10"
+						required></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="Saglabāt izmaiņas">
+					<a href="/certificate/show/all">Atcelt</a>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+
+</html>

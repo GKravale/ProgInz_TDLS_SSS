@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<h1>Visi sertifikāti</h1>
+	<a href="/certificate/add">Pievienot jaunu sertifikātu</a>
+	<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>Dalībnieks</th>
+			<th>Kurss</th>
+			<th>Rezultāts</th>
+			<th>Atzīme</th>
+			<th>Parakstīts</th>
+			<th>Nosūtīts</th>
+			<th>Darbības</th>
+		</tr>
+		<tr th:each="certificate : ${certificates}">
+			<td th:text="${certificate.id}"></td>
+			<td th:text="${certificate.participant.name + ' ' + certificate.participant.surname}"></td>
+			<td th:text="${certificate.course.title}"></td>
+			<td th:text="${certificate.result}"></td>
+			<td th:text="${certificate.grade.grade}"></td>
+			<td th:text="${certificate.signed ? 'Jā' : 'Nē'}"></td>
+			<td th:text="${certificate.sent ? 'Jā' : 'Nē'}"></td>
+			<td>
+				<a th:href="@{/certificate/show/{id}(id=${certificate.id})}">Skatīt</a> |
+				<a th:href="@{/certificate/update/{id}(id=${certificate.id})}">Rediģēt</a> |
+				<a th:href="@{/certificate/remove/{id}(id=${certificate.id})}"
+					onclick="return confirm('Vai tiešām vēlaties dzēst?')">Dzēst</a>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>
