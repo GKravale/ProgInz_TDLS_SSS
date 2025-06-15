@@ -17,7 +17,7 @@ public interface ITemplateService {
 	public abstract Template selectTemplateById(int tId) throws Exception;
 	
 	// update
-	public abstract void updateTemplateById(int tId) throws Exception;
+	public abstract void updateTemplateById(int tId, Template template) throws Exception;
 	
 	// delete
 	public abstract void deleteTemplateById(int tId) throws Exception;
