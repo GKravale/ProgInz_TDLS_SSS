@@ -3,11 +3,13 @@ package lv.venta.service.Impl;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import lv.venta.model.Template;
 import lv.venta.repo.ITemplateRepo;
 import lv.venta.service.ITemplateService;
 
+@Service
 public class TemplateServiceImpl implements ITemplateService{
 
 	@Autowired
