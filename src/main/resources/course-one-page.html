@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	
+
+<body>
+	
+	<p>Viens kurss: </p>
+	
+	<table th:each = "temp : ${package}">
+		<tr>
+			<td th:text="${temp.getCId()}" ></td>
+			<td th:text="${temp.getTitle()}" ></td>
+			<td th:text="${temp.getDescription()}" ></td>
+			<td th:text="${temp.getHours()}" ></td>
+			<td th:text="${temp.getCourseLevel()}" ></td>
+			<td th:text="${temp.getLecturer()}" ></td>
+			
+		</tr>
+		
+		
+	</table>
+	
+	
+</body>
+</html>
