@@ -53,7 +53,7 @@ public class CourseController {
 			courseService.deleteCourseById(cId);
 			ArrayList<Course> allCourses = courseService.selectAllCourses();
 			model.addAttribute("package", allCourses);
-			return "doctor-all-page";
+			return "course-all-page";
 		} catch (Exception e) {
 			model.addAttribute("package", e.getMessage());
 			return "error-page";
