@@ -30,7 +30,7 @@ public class Lecturer {
 	@Id
 	@Column(name = "L_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int L_ID;
+	private int lId;
 	
 	@NotNull
 	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀČŅ]{1}[a-zēūīļķģšāžčņ]+")

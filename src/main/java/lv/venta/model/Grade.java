@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -49,10 +50,10 @@ public class Grade {
     @NotNull
     private CourseDate courseDate;
 	
-	@ManyToOne
-    @JoinColumn(name = "CRT_ID")
-    @NotNull
-    private Certificate certificate;
+	@OneToOne
+	@JoinColumn(name = "CRT_ID")
+	@NotNull
+	private Certificate certificate;
 	
 	 @ManyToOne
 	 @JoinColumn(name = "CD_ID")
