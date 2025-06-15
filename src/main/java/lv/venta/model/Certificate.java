@@ -15,7 +15,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,9 +32,9 @@ public class Certificate {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "SId")
+	@Column(name = "C_Id")
 	@Setter(AccessLevel.NONE)
-	private int sId;
+	private int cId;
 
 //	@Column(name = "CertificateType")
 //	@NotNull
@@ -48,12 +47,12 @@ public class Certificate {
 	private CourseResult result;
 
 	@ManyToOne
-	@JoinColumn(name = "KId")
+	@JoinColumn(name = "C_Id")
 	@NotNull
 	private Course course;
 
 	@ManyToOne
-	@JoinColumn(name = "KDId")
+	@JoinColumn(name = "CD_Id")
 	@NotNull
 	private CourseParticipant participant;
 
