@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	
+
+<body>
+	
+	<p>Viens pasniedzējs: </p>
+	
+	<table th:each = "temp : ${package}">
+		<tr>
+			<td th:text="${temp.getLId()}" ></td>
+			<td th:text="${temp.getName()}" ></td>
+			<td th:text="${temp.getSurname()}" ></td>
+			
+		</tr>
+		
+		
+	</table>
+	
+	
+</body>
+</html>
