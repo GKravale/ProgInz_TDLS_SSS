@@ -25,6 +25,8 @@ public interface ICourseService {
 	
 	public abstract ArrayList<Course> selectCourseByLecturerId(int lId) throws Exception;
 	
+	public abstract ArrayList<Course> selectCourseByLecturer(Lecturer lecturer) throws Exception;
+	
 	// update
 	public abstract void udpateCourseById(int cId) throws Exception;
 	
