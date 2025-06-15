@@ -23,7 +23,7 @@ public class CourseController {
 	private ICourseService courseService;
 
 	// get /course/crud/show/all
-	@GetMapping("/all") // localhost:8081/course/crud/all
+	@GetMapping("/all") // localhost:8080/course/crud/all
 	public String getAllCourses(Model model) {
 		try {
 			model.addAttribute("package", courseService.selectAllCourses());
@@ -35,7 +35,7 @@ public class CourseController {
 	}
 
 	// get /course/crud/show/all/{id}
-	@GetMapping("/all/{cid}") // localhost:8081/course/crud/all/1
+	@GetMapping("/all/{cid}") // localhost:8080/course/crud/all/1
 	public String getCoursesById(@PathVariable("cid") int cId, Model model) {
 		try {
 			model.addAttribute("package", courseService.selectCourseById(cId));
@@ -47,7 +47,7 @@ public class CourseController {
 	}
 
 	// get /course/crud/remove/{id}
-	@GetMapping("/remove/{cid}") // localhost:8081/course/crud/remove/2
+	@GetMapping("/remove/{cid}") // localhost:8080/course/crud/remove/2
 	public String getCourseRemove(@PathVariable("cid") int cId, Model model) {
 		try {
 			courseService.deleteCourseById(cId);
@@ -60,13 +60,13 @@ public class CourseController {
 		}
 	}
 	
-	@GetMapping("/add") // localhost:8081/course/crud/add
+	@GetMapping("/add") // localhost:8080/course/crud/add
 	public String getCourseAdd(Model model) {
 		model.addAttribute("course", new Course());
 		return "course-add-page";
 	}
 	
-	@PostMapping("/add") // localhost:8081/course/crud/add
+	@PostMapping("/add") // localhost:8080/course/crud/add
 	public String postCourseAdd(@Valid Course course, BindingResult result) {
 		if(result.hasErrors()) {
 			return "course-add-page";
@@ -81,7 +81,7 @@ public class CourseController {
 		}
 	}
 	
-	@GetMapping("/update/{cid}") // localhost:8081/course/crud/update
+	@GetMapping("/update/{cid}") // localhost:8080/course/crud/update
 	public String getCourseUpdate(@PathVariable("cid") int cId, Model model) {
 		try {
 			

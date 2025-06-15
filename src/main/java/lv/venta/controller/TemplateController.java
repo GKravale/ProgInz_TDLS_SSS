@@ -23,7 +23,7 @@ public class TemplateController {
 		@Autowired
 		private ITemplateService templateService;
 		
-		@GetMapping("/all") // localhost:8081/template/crud/all
+		@GetMapping("/all") // localhost:8080/template/crud/all
 		public String getAllTemplates(Model model) {
 			try {
 				model.addAttribute("package", templateService.selectAllTemplates());
@@ -34,7 +34,7 @@ public class TemplateController {
 			}
 		}
 		
-		@GetMapping("/all/{tid}") // localhost":8081/template/crud/all/1
+		@GetMapping("/all/{tid}") // localhost":8080/template/crud/all/1
 		public String getTemplatesById(@PathVariable("tid") int tId, Model model) {
 			try {
 				model.addAttribute("package", templateService.selectTemplateById(tId));
@@ -45,7 +45,7 @@ public class TemplateController {
 			}
 		}
 		
-		@GetMapping("/remove/{tid}") // localhost:8081/template/crud/remove/2
+		@GetMapping("/remove/{tid}") // localhost:8080/template/crud/remove/2
 		public String getCourseRemove(@PathVariable("tid") int tId, Model model) {
 			try {
 				templateService.deleteTemplateById(tId);
@@ -58,13 +58,13 @@ public class TemplateController {
 			}
 		}
 		
-		@GetMapping("/add") // localhost:8081/template/crud/add
+		@GetMapping("/add") // localhost:8080/template/crud/add
 		public String getTemplateAdd(Model model) {
 			model.addAttribute("template", new Template());
 			return "template-add-page";
 		}
 		
-		@PostMapping("/add") // localhost:8081/template/crud/add
+		@PostMapping("/add") // localhost:8080/template/crud/add
 		public String postTemplateAdd(@Valid Template template, BindingResult result) {
 			if(result.hasErrors()) {
 				return "template-add-page";
@@ -79,7 +79,7 @@ public class TemplateController {
 			}
 		}
 		
-		@GetMapping("/update/{tid}") // localhost:8081/template/crud/update
+		@GetMapping("/update/{tid}") // localhost:8080/template/crud/update
 		public String getTemplateUpdate(@PathVariable("tid") int tId, Model model) {
 			try {
 				
