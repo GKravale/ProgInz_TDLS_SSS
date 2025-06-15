@@ -79,7 +79,7 @@ public class TemplateController {
 			}
 		}
 		
-		@GetMapping("/update/{tid}") // localhost:8080/course/crud/update
+		@GetMapping("/update/{tid}") // localhost:8080/template/crud/update
 		public String getTemplateUpdate(@PathVariable("tid") int tId, Model model) {
 			try {
 				
