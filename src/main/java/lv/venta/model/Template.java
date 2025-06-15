@@ -48,5 +48,4 @@ public class Template {
 		setDescription(description);
 		setPdfData(pdfData);
 	}
-
 }
