@@ -46,7 +46,7 @@ public class CourseDate {
 	@NotNull
 	private Course course;
 	
-	@ManyToMany(mappedBy = "courseDate")
+	@ManyToMany(mappedBy = "courseDates")
 	private Collection<CourseParticipant> participants;
 	
 	public CourseDate(LocalDate startingDate, LocalDate endingDate, Course course) {

@@ -1,6 +1,5 @@
 package lv.venta.controller;
 
-public class TemplateController {
 	
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +30,7 @@ public class TemplateController {
 		}
 		
 		@GetMapping("/all/{tid}") // localhost":8080/template/crud/all/1
-		public String getTemplatesById(@PathVariable("cid") int tId, Model model) {
+		public String getTemplatesById(@PathVariable("tid") int tId, Model model) {
 			try {
 				model.addAttribute("package", templateService.selectTemplateById(tId));
 				return "template-one-page";

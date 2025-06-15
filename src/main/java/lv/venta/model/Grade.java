@@ -56,7 +56,7 @@ public class Grade {
 	private Certificate certificate;
 	
 	 @ManyToOne
-	 @JoinColumn(name = "CD_ID")
+	 @JoinColumn(name = "CP_ID")
 	 @NotNull
 	 private CourseParticipant participant;
 	
