@@ -84,7 +84,7 @@ public class CourseParticipant {
 	private String country;
 
 	@ManyToMany
-	@JoinTable(name = "Participant_Course", joinColumns = @JoinColumn(name = "cpId"), inverseJoinColumns = @JoinColumn(name = "cdId"))
+	@JoinTable(name = "Participant_Course", joinColumns = @JoinColumn(name = "CP_ID"), inverseJoinColumns = @JoinColumn(name = "CD_ID"))
 	private Collection<CourseDate> courseDates;
 
 	public CourseParticipant(String name, String surname, String email, String phoneNo,

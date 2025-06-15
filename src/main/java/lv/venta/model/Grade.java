@@ -30,10 +30,9 @@ public class Grade {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "GId")
+    @Column(name = "G_ID")
     @Setter(AccessLevel.NONE)
 	private int gId;
-	
 	
 	@Column(name = "Grade")
 	@NotNull
@@ -46,24 +45,24 @@ public class Grade {
 	private LocalDate date;
 	
 	@ManyToOne
-    @JoinColumn(name = "KDId")
+    @JoinColumn(name = "CD_ID")
     @NotNull
-    private CourseDate courseDates;
+    private CourseDate courseDate;
 	
 	@ManyToOne
-    @JoinColumn(name = "SId")
+    @JoinColumn(name = "CRT_ID")
     @NotNull
     private Certificate certificate;
 	
 	 @ManyToOne
-	 @JoinColumn(name = "KDat_ID")
+	 @JoinColumn(name = "CD_ID")
 	 @NotNull
 	 private CourseParticipant participant;
 	
-	 public Grade(int grade, LocalDate date, CourseDate courseDates, Certificate certificate, CourseParticipant participant) {
+	 public Grade(int grade, LocalDate date, CourseDate courseDate, Certificate certificate, CourseParticipant participant) {
 		 setGrade(grade);
 		 setDate(date);
-		 setCourseDates(courseDates);
+		 setCourseDate(courseDate);
 		 setCertificate(certificate);
 		 setParticipant(participant);
 	 }
