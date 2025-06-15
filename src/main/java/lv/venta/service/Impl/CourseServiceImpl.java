@@ -24,7 +24,7 @@ public class CourseServiceImpl implements ICourseService {
 	}
 
 	@Override
-	public Course selectCourseByID(int cId) throws Exception {
+	public Course selectCourseById(int cId) throws Exception {
 		if(cId < 0) {
 			throw new Exception("Kursa ID nevar būt negatīvs!");
 		}
@@ -37,7 +37,7 @@ public class CourseServiceImpl implements ICourseService {
 	}
 
 	@Override
-	public void deleteCourseByID(int cId) throws Exception {
+	public void deleteCourseById(int cId) throws Exception {
 		if (cId < 0) {
             throw new Exception("Kusa ID jābūt pozitīvam!");
         }
@@ -56,8 +56,8 @@ public class CourseServiceImpl implements ICourseService {
 	}
 
 	@Override
-	public void updateCourseByID(int cId, Course course) throws Exception {
-		Course update = selectCourseByID(cId);
+	public void updateCourseById(int cId, Course course) throws Exception {
+		Course update = selectCourseById(cId);
 		update.setTitle(course.getTitle());
 		update.setDescription(course.getDescription());
 		update.setHours(course.getHours());
