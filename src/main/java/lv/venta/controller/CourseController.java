@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
 import lv.venta.model.Course;
+import lv.venta.model.enums.CourseLevel;
 import lv.venta.service.ICourseService;
+import lv.venta.service.ILecturerService;
 
 @Controller
 @RequestMapping("/course/crud")
@@ -21,6 +23,9 @@ public class CourseController {
 
 	@Autowired
 	private ICourseService courseService;
+
+	@Autowired
+	private ILecturerService lecturerService;
 
 	// get /course/crud/show/all
 	@GetMapping("/all") // localhost:8080/course/crud/all
@@ -59,32 +64,38 @@ public class CourseController {
 			return "error-page";
 		}
 	}
-	
+
 	@GetMapping("/add") // localhost:8080/course/crud/add
 	public String getCourseAdd(Model model) {
 		model.addAttribute("course", new Course());
+		model.addAttribute("levels", CourseLevel.values());
+		model.addAttribute("lecturers", lecturerService.getAllLecturers());
 		return "course-add-page";
 	}
-	
-	@PostMapping("/add") // localhost:8080/course/crud/add
-	public String postCourseAdd(@Valid Course course, BindingResult result) {
-		if(result.hasErrors()) {
+
+	@PostMapping("/add")
+	public String postCourseAdd(@Valid Course course, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			model.addAttribute("levels", CourseLevel.values());
+			model.addAttribute("lecturers", lecturerService.getAllLecturers());
 			return "course-add-page";
-		} else {
-			try {
-				courseService.createNewCourse(course);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
+		}
+
+		try {
+			courseService.createNewCourse(course);
 			return "redirect:/course/crud/all";
+		} catch (Exception e) {
+			model.addAttribute("error", e.getMessage());
+			model.addAttribute("levels", CourseLevel.values());
+			model.addAttribute("lecturers", lecturerService.getAllLecturers());
+			return "error-page";
 		}
 	}
-	
+
 	@GetMapping("/update/{cid}") // localhost:8080/course/crud/update
 	public String getCourseUpdate(@PathVariable("cid") int cId, Model model) {
 		try {
-			
+
 			Course courseForUpdating = courseService.selectCourseById(cId);
 			model.addAttribute("course", courseForUpdating);
 			model.addAttribute("cid", cId);
@@ -94,14 +105,15 @@ public class CourseController {
 			return "error-page";
 		}
 	}
-	
+
 	@PostMapping("/update/{cid}")
-	public String postCourseUpdate(@PathVariable("cid") int cId, @Valid Course course, BindingResult result, Model model) {
+	public String postCourseUpdate(@PathVariable("cid") int cId, @Valid Course course, BindingResult result,
+			Model model) {
 		try {
 			courseService.updateCourseById(cId, course);
-			return "redirect:/course/crud/all/"+cId;
+			return "redirect:/course/crud/all/" + cId;
 		} catch (Exception e) {
-			model.addAttribute("package",e.getMessage());
+			model.addAttribute("package", e.getMessage());
 			return "error-page";
 		}
 	}

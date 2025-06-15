@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lv.venta.model.Course;
+import lv.venta.model.Lecturer;
 import lv.venta.repo.ICourseRepo;
+import lv.venta.repo.ILecturerRepo;
 import lv.venta.service.ICourseService;
 
 @Service
@@ -14,10 +16,13 @@ public class CourseServiceImpl implements ICourseService {
 
 	@Autowired
 	private ICourseRepo courseRepo;
-	
+
+	@Autowired
+	private ILecturerRepo lecturerRepo;
+
 	@Override
 	public ArrayList<Course> selectAllCourses() throws Exception {
-		if(courseRepo.count() == 0) {
+		if (courseRepo.count() == 0) {
 			throw new Exception("courseRepo ir tukša!");
 		}
 		return (ArrayList<Course>) courseRepo.findAll();
@@ -25,39 +30,58 @@ public class CourseServiceImpl implements ICourseService {
 
 	@Override
 	public Course selectCourseById(int cId) throws Exception {
-		if(cId < 0) {
+		if (cId < 0) {
 			throw new Exception("Kursa ID nevar būt negatīvs!");
 		}
-		
-		if(!courseRepo.existsById(cId)) {
+
+		if (!courseRepo.existsById(cId)) {
 			throw new Exception("Kurss ar tādu ID nepastāv!");
 		}
-		
+
 		return courseRepo.findById(cId).get();
 	}
 
 	@Override
 	public void deleteCourseById(int cId) throws Exception {
 		if (cId < 0) {
-            throw new Exception("Kusa ID jābūt pozitīvam!");
-        }
+			throw new Exception("Kusa ID jābūt pozitīvam!");
+		}
 
-	    if(!courseRepo.existsById(cId)) {
-	        throw new Exception("Kurss ar tādu ID nepastāv!");
-	    }
+		if (!courseRepo.existsById(cId)) {
+			throw new Exception("Kurss ar tādu ID nepastāv!");
+		}
 
-	    courseRepo.deleteById(cId);
-		
+		courseRepo.deleteById(cId);
+
 	}
 
 	@Override
 	public void createNewCourse(Course course) throws Exception {
-		if(courseRepo.existsById(course.getCId())) {
-			throw new Exception("Kurss ar tādu ID jau eksistē!");
-		}
-		
-		courseRepo.save(course);
-		
+	    if (course == null) {
+	        throw new Exception("Kurss nedrīkst būt null.");
+	    }
+	    
+	    if (course.getLecturer() == null) {
+	        throw new Exception("Lektors ir jānorāda.");
+	    }
+	    
+	    Lecturer lecturer = lecturerRepo.findById(course.getLecturer().getLId())
+	            .orElseThrow(() -> new Exception("Lektors ar norādīto ID neeksistē"));
+	    course.setLecturer(lecturer);
+
+	    if (course.getTitle() == null || course.getTitle().isBlank()) {
+	        throw new Exception("Kursa nosaukums ir obligāts.");
+	    }
+
+	    if (course.getHours() <= 0) {
+	        throw new Exception("Kursa stundu skaitam jābūt pozitīvam.");
+	    }
+
+	    if (course.getCourseLevel() == null) {
+	        throw new Exception("Kursa līmenis ir jānorāda.");
+	    }
+
+	    courseRepo.save(course);
 	}
 
 	@Override
@@ -68,11 +92,9 @@ public class CourseServiceImpl implements ICourseService {
 		update.setHours(course.getHours());
 		update.setCourseLevel(course.getCourseLevel());
 		update.setLecturer(course.getLecturer());
-		update.setCourseDates(course.getCourseDates());
-		
+
 		courseRepo.save(update);
-		
+
 	}
 
-	
 }

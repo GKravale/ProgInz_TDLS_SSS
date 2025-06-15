@@ -34,7 +34,7 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "C_ID")
     @Setter(AccessLevel.NONE)
-    private int cId;
+    private Integer cId;
 
     @NotNull
     @Size(min = 3, max = 30)
@@ -55,6 +55,7 @@ public class Course {
     @Column(name = "Course_Level")
     private CourseLevel courseLevel;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "L_ID")
     private Lecturer lecturer;

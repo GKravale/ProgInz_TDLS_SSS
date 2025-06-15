@@ -30,7 +30,7 @@ public class Lecturer {
 	@Id
 	@Column(name = "L_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int lId;
+	private Integer lId;
 	
 	@NotNull
 	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀČŅ]{1}[a-zēūīļķģšāžčņ]+")
@@ -46,6 +46,7 @@ public class Lecturer {
 	
 	// viens pasniedzejs vairakiem kursiem
 	
+	@ToString.Exclude
 	@OneToMany(mappedBy = "lecturer")
 	private Collection<Course> courses;
 	

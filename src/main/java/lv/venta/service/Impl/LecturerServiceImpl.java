@@ -16,13 +16,13 @@ public class LecturerServiceImpl implements ILecturerService {
 	@Autowired
 	private ILecturerRepo lecturerRepo;
 
-	// retrieve
+	// retrieve all
 	@Override
 	public List<Lecturer> getAllLecturers() {
 		return lecturerRepo.findAll();
 	}
 
-	// retrieve all
+	// retrieve
 	@Override
 	public Optional<Lecturer> getLecturerById(int lId) {
 		return lecturerRepo.findById(lId);
