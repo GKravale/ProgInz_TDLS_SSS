@@ -49,31 +49,7 @@ public class CertificateServiceImpl implements ICertificateService {
 
 	// CREATE
 	
-	public List<Course> getAllCourses() {
-        return courseRepo.findAll();
-    }
 	
-	 public List<Template> getAllTemplates() {
-	        return templateRepo.findAll();
-	    }
-	 
-	 public Map<String, Object> prepareCertificateGeneration(int cId, int tId, LocalDate completionDate) {
-	        Course course = courseRepo.findById(cId)
-	                .orElseThrow(() -> new RuntimeException("Kurss ar ID " + cId + " nav atrasts"));
-	        
-	        Template template = templateRepo.findById(tId)
-	                .orElseThrow(() -> new RuntimeException("Veidne ar ID " + tId + " nav atrasta"));
-	        
-	        Map<String, Object> generationData = new HashMap<>();
-	        generationData.put("course", course);
-	        generationData.put("template", template);
-	        generationData.put("completionDate", completionDate);
-	        generationData.put("participantCount", 0);
-	        
-	        return generationData;
-	    }
-	 
-	 	// Dalibnieku ielade
 	 
 
 
