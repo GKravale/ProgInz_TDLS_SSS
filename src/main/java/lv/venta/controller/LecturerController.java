@@ -37,7 +37,7 @@ public class LecturerController {
 		@GetMapping("/all/{lid}") // localhost:8080/lecturer/crud/all/1
 		public String getLecturersById(@PathVariable("lid") int lId, Model model) {
 			try {
-				model.addAttribute("package", lecturerService.selectCourseById(cId));
+				model.addAttribute("package", lecturerService.selectLecturerById(lId));
 				return "lecturer-one-page";
 			} catch (Exception e) {
 				model.addAttribute("package", e.getMessage());
@@ -79,7 +79,7 @@ public class LecturerController {
 			}
 		}
 		
-		@GetMapping("/update/{cid}") // localhost:8080/lecturer/crud/update
+		@GetMapping("/update/{lid}") // localhost:8080/lecturer/crud/update
 		public String getLecturerUpdate(@PathVariable("lid") int lId, Model model) {
 			try {
 				
@@ -93,7 +93,7 @@ public class LecturerController {
 			}
 		}
 		
-		@PostMapping("/update/{cid}")
+		@PostMapping("/update/{lid}")
 		public String postLecturerUpdate(@PathVariable("lid") int lId, @Valid Lecturer lecturer, BindingResult result, Model model) {
 			try {
 				lecturerService.updateLecturerById(lId, lecturer);
