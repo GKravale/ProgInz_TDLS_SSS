@@ -1,16 +1,12 @@
 package lv.venta.service.Impl;
 
-import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import lv.venta.model.Certificate;
 import lv.venta.model.Course;
@@ -18,6 +14,7 @@ import lv.venta.model.CourseDate;
 import lv.venta.model.CourseParticipant;
 import lv.venta.model.Grade;
 import lv.venta.model.Template;
+import lv.venta.model.enums.CourseResult;
 import lv.venta.repo.ICertificateRepo;
 import lv.venta.repo.ICourseDateRepo;
 import lv.venta.repo.ICourseParticipantRepo;
@@ -49,9 +46,42 @@ public class CertificateServiceImpl implements ICertificateService {
 
 	// CREATE
 	
-	
-	 
+	@Override
+	public Certificate createCertificate(int cpId, int cdId, int tId, CourseResult result) throws Exception {
 
+	    CourseParticipant participant = participantRepo.findById(cpId)
+	        .orElseThrow(() -> new Exception("Dalībnieks ar ID " + cpId + " nav atrasts"));
+
+	    CourseDate courseDate = courseDateRepo.findById(cdId)
+	        .orElseThrow(() -> new Exception("Kursa datums ar ID " + cdId + " nav atrasts"));
+
+	    Course course = courseDate.getCourse();
+
+//	    Template template = templateRepo.findById(tId)
+//	        .orElseThrow(() -> new Exception("Veidne ar ID " + tId + " nav atrasta"));
+	    
+	    Grade grade = gradeRepo.findByParticipantAndCourseDate(participant, courseDate)
+	            .orElseThrow(() -> new Exception("Atzīme dalībniekam " + participant.getName() + " " + 
+	                                           participant.getSurname() + " kursa datumam nav atrasta"));
+
+	    Certificate certificate = new Certificate();
+	    certificate.setResult(result);
+	    certificate.setCourse(course);
+	    certificate.setParticipant(participant);
+	  //  certificate.setTemplate(template);
+	    certificate.setResult(result);
+	    certificate.setCourseDate(courseDate);
+	    certificate.setGrade(grade);
+	    certificate.setSigned(false);
+	    certificate.setSent(false);
+
+	    Certificate savedCertificate = certificateRepo.save(certificate);
+
+	    grade.setCertificate(savedCertificate);
+	    gradeRepo.save(grade);
+	    
+	    return savedCertificate;
+	}
 
 	// RETRIEVE
 
@@ -110,20 +140,19 @@ public class CertificateServiceImpl implements ICertificateService {
 
 		return certificateRepo.save(certificate);
 	}
-	
-	//DELETE
-	
+
+	// DELETE
+
 	@Transactional
 	@Override
-	 public void deleteCertificate(int crtId) throws Exception {
-	        Certificate certificate = getCertificateById(crtId);
+	public void deleteCertificate(int crtId) throws Exception {
+		Certificate certificate = getCertificateById(crtId);
 
-	        certificateRepo.delete(certificate);
-	 }
-	
+		certificateRepo.delete(certificate);
+	}
+
 	// TOGGLE PARAKSTITS
-	
+
 	// TOGGLE NOSUTITS
-	
-	 
+
 }

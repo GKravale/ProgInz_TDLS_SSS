@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import lv.venta.model.Certificate;
+import lv.venta.model.enums.CourseResult;
 
 public interface ICertificateService {
 
@@ -15,5 +16,8 @@ public interface ICertificateService {
 			int courseHours, int tId, LocalDate completionDate, int newGradeValue) throws Exception;
 
 	void deleteCertificate(int crtId) throws Exception;
+
+	Certificate createCertificate(int participantId, int courseDateId, int templateId, CourseResult result)
+			throws Exception;
 
 }
