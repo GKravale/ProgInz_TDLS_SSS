@@ -47,12 +47,12 @@ public class Certificate {
 	private CourseResult result;
 
 	@ManyToOne
-	@JoinColumn(name = "C_Id")
+	@JoinColumn(name = "Course_Id")
 	@NotNull
 	private Course course;
 
 	@ManyToOne
-	@JoinColumn(name = "CD_Id")
+	@JoinColumn(name = "Participant_Id")
 	@NotNull
 	private CourseParticipant participant;
 
