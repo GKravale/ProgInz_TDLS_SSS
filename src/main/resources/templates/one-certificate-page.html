@@ -1,0 +1,62 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<h1>Sertifikāta detaļas</h1>
+	<table border="1">
+		<tr>
+			<th>Lauks</th>
+			<th>Vērtība</th>
+		</tr>
+		<tr>
+			<td>ID</td>
+			<td th:text="${certificate.id}"></td>
+		</tr>
+		<tr>
+			<td>Dalībnieka vārds</td>
+			<td th:text="${certificate.participant.name}"></td>
+		</tr>
+		<tr>
+			<td>Dalībnieka uzvārds</td>
+			<td th:text="${certificate.participant.surname}"></td>
+		</tr>
+		<tr>
+			<td>Kursa nosaukums</td>
+			<td th:text="${certificate.course.title}"></td>
+		</tr>
+		<tr>
+			<td>Kursa stundas</td>
+			<td th:text="${certificate.course.hours}"></td>
+		</tr>
+		<tr>
+			<td>Rezultāts</td>
+			<td th:text="${certificate.result}"></td>
+		</tr>
+		<tr>
+			<td>Atzīme</td>
+			<td th:text="${certificate.grade.grade}"></td>
+		</tr>
+		<tr>
+			<td>Kursa sākuma datums</td>
+			<td th:text="${certificate.courseDate.startingDate}"></td>
+		</tr>
+		<tr>
+			<td>Kursa beigu datums</td>
+			<td th:text="${certificate.courseDate.endingDate}"></td>
+		</tr>
+		<tr>
+			<td>Parakstīts</td>
+			<td th:text="${certificate.signed ? 'Jā' : 'Nē'}"></td>
+		</tr>
+		<tr>
+			<td>Nosūtīts</td>
+			<td th:text="${certificate.sent ? 'Jā' : 'Nē'}"></td>
+		</tr>
+	</table>
+	<br>
+	<a href="/certificate/show/all">Atpakaļ uz sarakstu</a> |
+	<a th:href="@{/certificate/update/{id}(id=${certificate.id})}">Rediģēt</a> |
+	<a th:href="@{/certificate/remove/{id}(id=${certificate.id})}"
+		onclick="return confirm('Vai tiešām vēlaties dzēst?')">Dzēst</a>
+</body>
+
+</html>

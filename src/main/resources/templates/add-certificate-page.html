@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<h1>Pievienot jaunu sertifikātu</h1>
+	<form th:action="@{/certificate/add}" method="post">
+		<table>
+			<tr>
+				<td>Dalībnieka ID:</td>
+				<td><input type="number" name="cpId" required></td>
+			</tr>
+			<tr>
+				<td>Kursa datuma ID:</td>
+				<td><input type="number" name="cdId" required></td>
+			</tr>
+			<tr>
+				<td>Veidnes ID:</td>
+				<td><input type="number" name="tId" required></td>
+			</tr>
+			<tr>
+				<td>Rezultāts:</td>
+				<td>
+					<select name="result" required>
+						<option value="">Izvēlieties rezultātu</option>
+						<option th:each="result : ${courseResults}" th:value="${result}" th:text="${result}"></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" value="Pievienot sertifikātu">
+					<a href="/certificate/show/all">Atcelt</a>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+
+</html>
