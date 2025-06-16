@@ -35,7 +35,7 @@ public class LecturerController {
 		}
 	}
 
-	@GetMapping("/all/{lid}") // localhost:8080/lecturer/crud/all/1
+	@GetMapping("/{lid}") // localhost:8080/lecturer/crud/1
 	public String getLecturersById(@PathVariable("lid") int lId, Model model) {
 		try {
 			model.addAttribute("package", lecturerService.getLecturerById(lId));
