@@ -34,7 +34,7 @@ public class TemplateController {
 			}
 		}
 		
-		@GetMapping("/all/{tid}") // localhost":8080/template/crud/all/1
+		@GetMapping("/{tid}") // localhost:8080/template/crud/1
 		public String getTemplatesById(@PathVariable("tid") int tId, Model model) {
 			try {
 				model.addAttribute("package", templateService.selectTemplateById(tId));
