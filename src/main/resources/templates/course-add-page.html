@@ -35,7 +35,7 @@
             <tr>
                 <td>Lecturer:</td>
                 <td>
-					<select th:field="*{lecturer.lId}" required>
+					<select th:field="*{lecturer}" required>
 					    <option value="" disabled selected>Izvēlies lektoru</option>
 					    <option th:each="lec : ${lecturers}" 
 					            th:value="${lec.lId}" 
