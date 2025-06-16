@@ -1,6 +1,7 @@
 package lv.venta.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import jakarta.persistence.Column;
@@ -47,7 +48,7 @@ public class CourseDate {
 	private Course course;
 	
 	@ManyToMany(mappedBy = "courseDates")
-	private Collection<CourseParticipant> participants;
+	private Collection<CourseParticipant> participants = new ArrayList<>();
 	
 	public CourseDate(LocalDate startingDate, LocalDate endingDate, Course course) {
 		setStartingDate(startingDate);

@@ -1,5 +1,6 @@
 package lv.venta.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import jakarta.persistence.Column;
@@ -25,7 +26,7 @@ import jakarta.persistence.JoinColumn;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+@ToString(exclude = "courseDates")
 @Table(name = "Course_Participant_Table")
 @Entity
 public class CourseParticipant {
@@ -85,7 +86,7 @@ public class CourseParticipant {
 
 	@ManyToMany
 	@JoinTable(name = "Participant_Course", joinColumns = @JoinColumn(name = "CP_ID"), inverseJoinColumns = @JoinColumn(name = "CD_ID"))
-	private Collection<CourseDate> courseDates;
+	private Collection<CourseDate> courseDates = new ArrayList<>();
 
 	public CourseParticipant(String name, String surname, String email, String phoneNo,
 			String streetOrHouseTitleAndNumber, int apartmentNo, String city, String postalCode, String country) {
