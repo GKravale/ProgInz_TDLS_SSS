@@ -76,9 +76,6 @@ public class CertificateServiceImpl implements ICertificateService {
 	    certificate.setSent(false);
 
 	    Certificate savedCertificate = certificateRepo.save(certificate);
-
-	    grade.setCertificate(savedCertificate);
-	    gradeRepo.save(grade);
 	    
 	    return savedCertificate;
 	}
