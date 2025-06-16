@@ -39,8 +39,8 @@ public class CourseController {
 		}
 	}
 
-	// get /course/crud/show/all/{id}
-	@GetMapping("/all/{cid}") // localhost:8080/course/crud/all/1
+	// get /course/crud/show/{id}
+	@GetMapping("/{cid}") // localhost:8080/course/crud/show/{id}
 	public String getCoursesById(@PathVariable("cid") int cId, Model model) {
 		try {
 			model.addAttribute("package", courseService.selectCourseById(cId));
