@@ -61,7 +61,7 @@ public class CertificateController {
 		return "add-certificate-page"; // add-certificate-page.html
 	}
 
-	// Post - /certificate//add
+	// Post - /certificate/add
 	@PostMapping("/add")
 	public String postControllerAddCertificate(@RequestParam("cpId") int cpId, @RequestParam("cdId") int cdId,
 			@RequestParam("tId") int tId, @RequestParam("result") CourseResult result, Model model) {
