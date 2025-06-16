@@ -1,24 +1,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
-	
+
+<head>
+	<title>Visi kursi</title>
+</head>
 
 <body>
-	
-	<p>Visi kursi: </p>
-	
-	<table th:each = "temp : ${package}">
+
+	<p>Visi kursi:</p>
+
+	<table border="1">
 		<tr>
-			<td th:text="${temp.getCId()}" ></td>
-			<td th:text="${temp.getTitle()}" ></td>
-			<td th:text="${temp.getDescription()}" ></td>
-			<td th:text="${temp.getHours()}" ></td>
-			<td th:text="${temp.getCourseLevel()}" ></td>
-			<td th:text="${temp.getLecturer()}" ></td>
-			
+			<th>ID</th>
+			<th>Nosaukums</th>
+			<th>Apraksts</th>
+			<th>Stundas</th>
+			<th>Līmenis</th>
+			<th>Lektors</th>
 		</tr>
-		
-		
+		<tr th:each="temp : ${package}">
+			<td th:text="${temp.getCId()}"></td>
+			<td th:text="${temp.getTitle()}"></td>
+			<td th:text="${temp.getDescription()}"></td>
+			<td th:text="${temp.getHours()}"></td>
+			<td th:text="${temp.getCourseLevel()}"></td>
+			<td th:text="${temp.getLecturer()}"></td>
+		</tr>
 	</table>
-	
-	
+
 </body>
+
 </html>

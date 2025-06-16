@@ -1,52 +1,51 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Pievienot kursu</title>
-    <meta charset="UTF-8">
-</head>
-<body>
-    <h2>Pievieno kursu:</h2>
-    
-    <form th:action="@{/course/crud/add}" method="post" th:object="${course}">
-        <table>
-            <tr>
-                <td>Title:</td>
-                <td><input type="text" th:field="*{title}" /></td>
-            </tr>
-            <tr>
-                <td>Description:</td>
-                <td><input type="text" th:field="*{description}" /></td>
-            </tr>
-            <tr>
-                <td>Hours:</td>
-                <td><input type="number" th:field="*{hours}" /></td>
-            </tr>
-            <tr>
-                <td>Course Level:</td>
-                <td>
-                    <select th:field="*{courseLevel}">
-                        <option th:each="lvl : ${levels}" 
-                                th:value="${lvl}" 
-                                th:text="${lvl}">
-                        </option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Lecturer:</td>
-                <td>
-					<select th:field="*{lecturer}" required>
-					    <option value="" disabled selected>Izvēlies lektoru</option>
-					    <option th:each="lec : ${lecturers}" 
-					            th:value="${lec.lId}" 
-					            th:text="${lec.name + ' ' + lec.surname}">
-					    </option>
-					</select>
-                </td>
-            </tr>
-        </table>
 
-        <button type="submit">Saglabāt</button>
-    </form>
+<head>
+	<title>Pievienot kursu</title>
+
+</head>
+
+<body>
+	<h2>Pievieno kursu:</h2>
+
+	<form th:action="@{/course/crud/add}" method="post" th:object="${course}">
+		<table>
+			<tr>
+				<td>Title:</td>
+				<td><input type="text" th:field="*{title}" /></td>
+			</tr>
+			<tr>
+				<td>Description:</td>
+				<td><input type="text" th:field="*{description}" /></td>
+			</tr>
+			<tr>
+				<td>Hours:</td>
+				<td><input type="number" th:field="*{hours}" /></td>
+			</tr>
+			<tr>
+				<td>Course Level:</td>
+				<td>
+					<select th:field="*{courseLevel}">
+						<option th:each="lvl : ${levels}" th:value="${lvl}" th:text="${lvl}">
+						</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Lecturer:</td>
+				<td>
+					<select th:field="*{lecturer}" required>
+						<option value="" disabled selected>Izvēlies lektoru</option>
+						<option th:each="lec : ${lecturers}" th:value="${lec.lId}"
+							th:text="${lec.name + ' ' + lec.surname}">
+						</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+
+		<button type="submit">Saglabāt</button>
+	</form>
 </body>
+
 </html>
