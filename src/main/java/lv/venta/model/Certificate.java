@@ -55,8 +55,8 @@ public class Certificate {
 	@NotNull
 	private CourseParticipant participant;
 
-	@OneToOne(mappedBy = "certificate", cascade = CascadeType.ALL)
-	@ToString.Exclude
+	@OneToOne
+	@JoinColumn(name = "grade_id")
 	private Grade grade;
 
 	@Column(name = "Is_Signed")

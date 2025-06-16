@@ -66,10 +66,10 @@ public class ProgInzTdlsSssApplication {
 
 				// Course participant
 
-				CourseParticipant cp1 = new CourseParticipant("Arvis", "Arvitis", "arvitis1232gmail.com",
-						"+37112345678", "Brivibas 21", 14, "Riga", "LV-1000", "Latvija");
+				CourseParticipant cp1 = new CourseParticipant("Arvis", "Arvitis", "arvitis1232@gmail.com",
+						"+37112345678", "Brivibas 21", 14, "Riga", "LV1000", "Latvija");
 				CourseParticipant cp2 = new CourseParticipant("Darvis", "Darvitis", "darvitis1232@gmail.com",
-						"+37122345678", "Nebrivibas 21", 14, "Riga", "LV-1000", "Latvija");
+						"+37122345678", "Nebrivibas 21", 14, "Riga", "LV1000", "Latvija");
 
 				participantRepo.saveAll(List.of(cp1, cp2));
 				
@@ -103,7 +103,7 @@ public class ProgInzTdlsSssApplication {
 				
 				Certificate cert1 = new Certificate(CourseResult.Certificate, c3, g1, cp2, t1);
 				
-				certificateRepo.save(cert1);
+				// certificateRepo.save(cert1);
 				
 				
 				
